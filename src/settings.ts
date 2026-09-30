@@ -132,7 +132,13 @@ class DataPointCardSettings extends FormattingSettingsCard {
         value: { value: "#000000" },
         isNoFillItemSupported: true
     });
-
+    
+    unmatchedOpacity = new formattingSettings.NumUpDown({
+    name: "unmatchedOpacity",
+    displayName: "Unmatched transparency (%)",
+    value: 50
+    });
+    
     defaultFill = new formattingSettings.ColorPicker({
         name: "defaultFill",
         displayName: "Default color",
@@ -148,7 +154,7 @@ class DataPointCardSettings extends FormattingSettingsCard {
     name = "dataPoint";
     displayName = "Data Colors";
     analyticsPane = false;
-    slices: FormattingSettingsSlice[] = [this.borders, this.unmatchedFill, this.defaultFill, this.showAll];
+    slices: FormattingSettingsSlice[] = [this.borders, this.unmatchedFill, this.unmatchedOpacity, this.defaultFill, this.showAll];
 }
 
 class StatesCardSettings extends FormattingSettingsCard {

@@ -236,6 +236,12 @@
             }
           }
         },
+        "unmatchedOpacity": {
+          "displayName": "Unmatched transparency (%)",
+          "type": {
+            "numeric": true
+          }
+        },
         "borders": {
           "displayName": "Borders",
           "type": {

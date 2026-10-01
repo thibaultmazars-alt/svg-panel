@@ -431,35 +431,25 @@ export class Visual implements IVisual {
         }
 */
         const indexedElements = this.getIndexedElements(matchMap);
-        const unmatchedElements = this.getUnmatchedElements(
-indexedElements,
-matchedElements
-);
+        const unmatchedElements = this.getUnmatchedElements(indexedElements, matchedElements); const unmatchedFill =model.settings.dataPoint.unmatchedFill;
+        const unmatchedTransparency = model.settings.dataPoint.unmatchedOpacity;
  
-const unmatchedFill =
-model.settings.dataPoint.unmatchedFill;
+        const unmatchedOpacity = Math.max(0,Math.min(1, 1 - unmatchedTransparency / 100));
  
-const unmatchedTransparency =
-model.settings.dataPoint.unmatchedOpacity;
+        for (const element of unmatchedElements) {
+            if (model.settings.general.showUnmatched) {
+                element.style.display = "";
  
-const unmatchedOpacity = Math.max(
-0,
-Math.min(1, 1 - unmatchedTransparency / 100)
-);
+                if (unmatchedFill) {
+                    element.style.fill = unmatchedFill;
+                }
  
-for (const element of unmatchedElements) {
-if (model.settings.general.showUnmatched) {
-element.style.display = "";
- 
-if (unmatchedFill) {
-element.style.fill = unmatchedFill;
-}
- 
-element.style.opacity = unmatchedOpacity.toString();
-} else {
-element.style.display = "none";
-}
-}
+                element.style.opacity = unmatchedOpacity.toString();
+                } 
+            else {
+                element.style.display = "none";
+            }
+        }
         if (model.settings.dataLabels.show && model.settings.dataLabels.unmatchedLabels && model.settings.general.showUnmatched) {
             for (const element of indexedElements) {
                 if (matchedElements.has(element)) {

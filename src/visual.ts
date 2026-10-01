@@ -408,11 +408,9 @@ export class Visual implements IVisual {
                 if (model.settings.general.showUnmatched) {
                     element.style.display = "";
                     const unmatchedFill = model.settings.dataPoint.unmatchedFill;
-                    const unmatchedOpacity = model.settings.dataPoint.unmatchedOpacity;
                     if (unmatchedFill) {
                         element.style.fill = unmatchedFill;
                     }
-                    element.style.opacity = ((100 - unmatchedOpacity) / 100).toString();
                 } else {
                     // Keep the element visible if it is an ancestor OR a descendant of a matched element,
                     // to avoid hiding matched children or matched parent containers.
